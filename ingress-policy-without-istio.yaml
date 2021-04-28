@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ssc-engine-access
+spec:
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          app: core
+      podSelector:
+        matchLabels:
+          app: approuter
+  podSelector:
+    matchLabels:
+      app: ssc-engine
+  policyTypes:
+  - Ingress
+  - Egress

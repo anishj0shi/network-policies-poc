@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: external-db
+spec:
+  hosts:
+  - zeus.hana.canary.eu-central-1.whitney.dbaas.ondemand.com
+  ports:
+  - number: 32988
+    name: dbext
+    protocol: TCP
+  resolution: DNS
+  location: MESH_EXTERNAL
